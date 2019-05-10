@@ -96,7 +96,6 @@ void setup() {
         animation_rgb_diagnosis();
     }
     //animation_blinking_star(800);
-    animation_vw_logo();
 }
 
 /*
@@ -220,28 +219,3 @@ void animation_blinking_star(int blinks) {
     }
 }
 
-/*
-Prints the VW logo and keeps the logo for a defined time
-*/
-void animation_vw_logo() {
-    Serial.println("INFO: Printing VW Logo animation ... ");
-    pixel_clear();
-    int vw_logo[] = {13,19,25,29,37,39,49,55,65,67,71,75,79,81,83,85,91,95};
-    for(int k=0; k<3; k++) {
-        for(int c=0; c<250; c=c+15) {
-            for(int i=0;i<18;i++) {
-                strip.SetPixelColor(vw_logo[i], RgbColor(0,(int)(c/2),c));
-                strip.Show();
-            }
-        delay(1);
-        }
-        for(int c=250; c>16; c=c-15) {
-            for(int i=0;i<18;i++) {
-                strip.SetPixelColor(vw_logo[i], RgbColor(0,(int)(c/2),c));
-                strip.Show();
-            }
-            delay(1);
-        }
-    }
-    Serial.println("INFO: logo animation completed");
-}
